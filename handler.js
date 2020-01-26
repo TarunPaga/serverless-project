@@ -54,7 +54,7 @@ module.exports.authorize = async (et,context) => {
   {
     throw new error("not authorized");
   }
-console.log(key+"2");
+
   return {
     "principalId": "tar",
     "policyDocument": {
@@ -93,10 +93,10 @@ console.log(data);
 
   try{ 
   let data =await dynamodb.put(params).promise();
-  console.log(data)
+  
   return {
     statusCode: 200,
-    body: JSON.stringify(data),
+    body: JSON.stringify("employee created"),
   };
   
  
@@ -109,12 +109,7 @@ console.log(data);
         body: a.body
       };
   }
-  // const response= {
-  //   statusCode: 200,
-  //   body: et.body
-  // };
-  // console.log(response)
-  // callback(null,response);
+
 
 }
 
@@ -228,13 +223,13 @@ module.exports.delete = async (et,ctxt,) => {
       id: et.pathParameters.id,
     },
   };
-let result;
+  let result={}
   try{ 
     result =await dynamodb.delete(params).promise();
-    console.log(result)
+   
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify("employee deleted"),
     };
     
    
